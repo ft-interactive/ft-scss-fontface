@@ -1,0 +1,6 @@
+{
+  "name": "ft-scss-fontface",
+  "version": "0.0.1",
+  "main": "./main.scss",
+  "private": true
+}
