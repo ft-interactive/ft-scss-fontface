@@ -1,4 +1,4 @@
-$ft-font-base-url:       'http://interactivegraphics.ft-static.com/inc/fonts' !default;
+$ft-font-base-url:       "http://interactivegraphics.ft-static.com/inc/fonts" !default;
 
 $ft-include-fontfaces:    false !default;
 
@@ -7,9 +7,9 @@ $ft-include-benton-font:  true !default;
 $ft-include-clarion-font: true !default;
 $ft-include-icon-font:    true !default;
 
-$ft-fontfamily-miller: 'MillerDisplay', 'Clarion', Georgia, serif;
-$ft-fontfamily-clarion: 'Clarion', Georgia, serif;
-$ft-fontfamily-benton: 'BentonSans', Arial, Helvetica, sans-serif;
+$ft-fontfamily-miller: "MillerDisplay", "Clarion", Georgia, serif;
+$ft-fontfamily-clarion: "Clarion", Georgia, serif;
+$ft-fontfamily-benton: "BentonSans", Arial, Helvetica, sans-serif;
 
 @if $ft-include-fontfaces == true {
 
@@ -24,42 +24,53 @@ $ft-fontfamily-benton: 'BentonSans', Arial, Helvetica, sans-serif;
     }
 
     @if $ft-include-miller-font == true{
+
         @font-face{
             font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.woff") format("woff"),
-                url("#{$ft-font-base-url}/MillerDisplay-Roman.ttf") format("truetype");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.eot");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Roman.woff") format("woff"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Roman.ttf") format("truetype");
             font-style: normal;
             font-weight: normal;
         }
 
         @font-face{
             font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.woff") format("woff"),
-                url("#{$ft-font-base-url}/MillerDisplay-Roman.ttf") format("truetype");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Light.eot");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Light.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Light.woff") format("woff"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Light.ttf") format("truetype");
             font-style: normal;
             font-weight: 200;
         }
 
         @font-face{
             font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Bold.woff") format("woff"),
-                url("#{$ft-font-base-url}/MillerDisplay-Bold.ttf") format("truetype");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Bold.eot");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Bold.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Bold.woff") format("woff"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Bold.ttf") format("truetype");
             font-style: normal;
-            font-weight: bold; 
+            font-weight: bold;
         }
 
         @font-face{
             font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Italic.ttf") format("truetype"),
-                url("#{$ft-font-base-url}/MillerDisplay-Roman.woff") format("woff");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Italic.eot");
+            src: url("#{$ft-font-base-url}/MillerDisplay-Italic.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Italic.woff") format("woff"),
+                 url("#{$ft-font-base-url}/MillerDisplay-Italic.ttf") format("truetype");
             font-style: italic;
             font-weight: normal;
         }
 
         @font-face{
             font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.ttf") format("truetype"),
-                url("#{$ft-font-base-url}/MillerDisplay-Bold.woff") format("woff");
+            src: url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.eot");
+            src: url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.woff") format("woff"),
+                 url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.ttf") format("truetype");
             font-style: italic;
             font-weight: bold;
         }
@@ -68,8 +79,8 @@ $ft-fontfamily-benton: 'BentonSans', Arial, Helvetica, sans-serif;
     @if $ft-include-benton-font == true{
         @font-face{
             font-family: "BentonSans";
-            src: url("http://s1.ft-static.com/m/font/e9d47971-b7d8-4663-8c9b-3a0b425e981f-2.eot");
-            src: url("http://s1.ft-static.com/m/font/e9d47971-b7d8-4663-8c9b-3a0b425e981f-2.eot?#iefix") format("embedded-opentype"), 
+            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-regular.eot");
+            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-regular.eot?#iefix") format("embedded-opentype"), 
             url("#{$ft-font-base-url}/BentonSansRegular.woff") format("woff"),
             url("#{$ft-font-base-url}/BentonSansRegular.ttf") format("truetype");
             font-style: normal;
@@ -78,8 +89,8 @@ $ft-fontfamily-benton: 'BentonSans', Arial, Helvetica, sans-serif;
 
         @font-face{
             font-family: "BentonSans";
-            src: url("http://s1.ft-static.com/m/font/76e393a7-edbd-4283-91db-93b1a40fe465-2.eot");
-            src: url("http://s1.ft-static.com/m/font/76e393a7-edbd-4283-91db-93b1a40fe465-2.eot?#iefix") format("embedded-opentype"), 
+            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot");
+            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot?#iefix") format("embedded-opentype"), 
             url("#{$ft-font-base-url}/BentonSansBold.woff") format("woff"),
             url("#{$ft-font-base-url}/BentonSansBold.ttf") format("truetype");
             font-style: normal;
@@ -88,14 +99,17 @@ $ft-fontfamily-benton: 'BentonSans', Arial, Helvetica, sans-serif;
 
         @font-face{
             font-family: "BentonSans";
-            src: url("#{$ft-font-base-url}/BentonSansLight.woff") format("woff"),
-                url("#{$ft-font-base-url}/BentonSansLight.ttf") format("truetype");
+            src: url("#{$ft-font-base-url}/BentonSansLight.eot");
+            src: url("#{$ft-font-base-url}/BentonSansLight.eot?#iefix") format("embedded-opentype"),
+                 url("#{$ft-font-base-url}/BentonSansLight.woff") format("woff"),
+                 url("#{$ft-font-base-url}/BentonSansLight.ttf") format("truetype");
             font-style: normal;
             font-weight: 200;
         }
     }
 
     @if $ft-include-clarion-font == true{
+        /* eot is not included with clarion because it"s better to use Georgia for old IE versions */
         @font-face{
             font-family: "Clarion";
             src: url("#{$ft-font-base-url}/Clarion.woff") format("woff"),
