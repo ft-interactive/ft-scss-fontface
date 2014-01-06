@@ -8,21 +8,40 @@ $ft-include-clarion-font:           true !default;
 $ft-include-bentongraphics-font:    false !default;
 $ft-include-icon-font:              false !default;
 
+$ft-sans-only: false !default;
+
 $ft-fontfamily-miller: "MillerDisplay", "Clarion", Georgia, serif;
 $ft-fontfamily-clarion: "Clarion", Georgia, serif;
 $ft-fontfamily-benton: "BentonSans", Arial, Helvetica, sans-serif;
 $ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, sans-serif;
 
-%headline-font {
-    font-family: $ft-fontfamily-miller;
-}
 
-%body-font {
-    font-family: $ft-fontfamily-clarion;
-}
+// allow the developer to flip a switch so all fonts are benton (sans-serif)
+@if $ft-sans-only {
+    %headline-font {
+        font-family: $ft-fontfamily-benton;
+    }
 
-%alt-font {
-    font-family: $ft-fontfamily-benton;
+    %body-font {
+        font-family: $ft-fontfamily-benton;
+    }
+
+    %alt-font {
+        font-family: $ft-fontfamily-benton;
+    }
+
+} @else {
+    %headline-font {
+        font-family: $ft-fontfamily-miller;
+    }
+
+    %body-font {
+        font-family: $ft-fontfamily-clarion;
+    }
+
+    %alt-font {
+        font-family: $ft-fontfamily-benton;
+    }
 }
 
 %map-font {
