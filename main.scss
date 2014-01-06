@@ -59,7 +59,7 @@ $ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, 
     $url: $base-url + '/' + $f;
 
     @font-face{
-        font-family: "MillerDisplay";
+        font-family: $name;
         @if $no-ie8 {
             src: url("#{$url}.woff") format("woff"),
                  url("#{$url}.ttf") format("truetype");
