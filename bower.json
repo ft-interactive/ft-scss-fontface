@@ -2,5 +2,9 @@
   "name": "ft-scss-fontface",
   "version": "0.0.2",
   "main": "./main.scss",
-  "private": true
+  "private": true,
+  "ignore": [
+    "config.rb",
+    "tests"
+  ]
 }
