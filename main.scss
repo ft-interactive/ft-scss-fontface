@@ -15,7 +15,6 @@ $ft-fontfamily-clarion: "Clarion", Georgia, serif;
 $ft-fontfamily-benton: "BentonSans", Arial, Helvetica, sans-serif;
 $ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, sans-serif;
 
-
 // allow the developer to flip a switch so all fonts are benton (sans-serif)
 @if $ft-sans-only {
     %headline-font {
@@ -33,6 +32,7 @@ $ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, 
 } @else {
     %headline-font {
         font-family: $ft-fontfamily-miller;
+        font-weight: normal;
     }
 
     %body-font {
