@@ -1,19 +1,72 @@
-$ft-font-base-url:       "http://interactivegraphics.ft-static.com/inc/fonts" !default;
+$ft-font-base-url:                  "http://interactivegraphics.ft-static.com/inc/fonts" !default;
 
-$ft-include-fontfaces:    false !default;
+$ft-include-fontfaces:              false !default;
 
-$ft-include-miller-font:  true !default;
-$ft-include-benton-font:  true !default;
-$ft-include-clarion-font: true !default;
-$ft-include-icon-font:    true !default;
+$ft-include-miller-font:            true !default;
+$ft-include-benton-font:            true !default;
+$ft-include-clarion-font:           true !default;
+$ft-include-bentongraphics-font:    false !default;
+$ft-include-icon-font:              false !default;
 
 $ft-fontfamily-miller: "MillerDisplay", "Clarion", Georgia, serif;
 $ft-fontfamily-clarion: "Clarion", Georgia, serif;
 $ft-fontfamily-benton: "BentonSans", Arial, Helvetica, sans-serif;
+$ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, sans-serif;
+
+%headline-font {
+    font-family: $ft-fontfamily-miller;
+}
+
+%body-font {
+    font-family: $ft-fontfamily-clarion;
+}
+
+%alt-font {
+    font-family: $ft-fontfamily-benton;
+}
+
+%map-font {
+    font-family: $ft-fontfamily-bentongraphics;
+}
+
+@mixin font-face($name, $style: normal, $weight: normal, $filename: null, $base-url: $ft-font-base-url, $no-ie8: false, $special-eot-url: null) {
+
+    $f: $name;
+
+    @if $filename {
+        $f: $filename;
+    }
+
+    $url: $base-url + '/' + $f;
+
+    @font-face{
+        font-family: "MillerDisplay";
+        @if $no-ie8 {
+            src: url("#{$url}.woff") format("woff"),
+                 url("#{$url}.ttf") format("truetype");
+        } @else if $special-eot-url {
+            src: url('#{$special-eot-url}.eot');
+            src: url('#{$special-eot-url}.eot?#iefix') format('embedded-opentype'),
+                 url("#{$url}.woff") format("woff"),
+                 url("#{$url}.ttf") format("truetype");
+        } @else {
+            src: url('#{$url}.eot');
+            src: url('#{$url}.eot?#iefix') format('embedded-opentype'),
+                 url("#{$url}.woff") format("woff"),
+                 url("#{$url}.ttf") format("truetype");
+        }
+        font-style: $style;
+        font-weight: $weight;
+    }
+
+    @content;
+}
+
 
 @if $ft-include-fontfaces == true {
 
-    @if $ft-include-icon-font == true{
+
+    @if $ft-include-icon-font == true {
         @font-face{
             font-family: "ft-icons";
             src: url("#{$ft-font-base-url}/icons.woff") format("woff"),
@@ -23,115 +76,70 @@ $ft-fontfamily-benton: "BentonSans", Arial, Helvetica, sans-serif;
         }
     }
 
-    @if $ft-include-miller-font == true{
 
-        @font-face{
-            font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.eot");
-            src: url("#{$ft-font-base-url}/MillerDisplay-Roman.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Roman.woff") format("woff"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Roman.ttf") format("truetype");
-            font-style: normal;
-            font-weight: normal;
-        }
+    @if $ft-include-miller-font == true {
+        // normal
+        @include font-face($name: 'MillerDisplay', $filename: 'MillerDisplay-Roman');
 
-        @font-face{
-            font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Light.eot");
-            src: url("#{$ft-font-base-url}/MillerDisplay-Light.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Light.woff") format("woff"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Light.ttf") format("truetype");
-            font-style: normal;
-            font-weight: 200;
-        }
+        // light
+        @include font-face($name: 'MillerDisplay', $filename: 'MillerDisplay-Light', $weight: 200);
 
-        @font-face{
-            font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Bold.eot");
-            src: url("#{$ft-font-base-url}/MillerDisplay-Bold.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Bold.woff") format("woff"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Bold.ttf") format("truetype");
-            font-style: normal;
-            font-weight: bold;
-        }
+        // bold
+        @include font-face($name: 'MillerDisplay', $filename: 'MillerDisplay-Bold', $weight: bold);
 
-        @font-face{
-            font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-Italic.eot");
-            src: url("#{$ft-font-base-url}/MillerDisplay-Italic.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Italic.woff") format("woff"),
-                 url("#{$ft-font-base-url}/MillerDisplay-Italic.ttf") format("truetype");
-            font-style: italic;
-            font-weight: normal;
-        }
+        // italic
+        @include font-face($name: 'MillerDisplay', $filename: 'MillerDisplay-Italic', $style: italic);
 
-        @font-face{
-            font-family: "MillerDisplay";
-            src: url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.eot");
-            src: url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.woff") format("woff"),
-                 url("#{$ft-font-base-url}/MillerDisplay-SemiboldItal.ttf") format("truetype");
-            font-style: italic;
-            font-weight: bold;
-        }
+        // bold italic
+        @include font-face($name: 'MillerDisplay', $filename: 'MillerDisplay-SemiboldItal', $style: italic, $weight: bold);
     }
 
-    @if $ft-include-benton-font == true{
-        @font-face{
-            font-family: "BentonSans";
-            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-regular.eot");
-            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-regular.eot?#iefix") format("embedded-opentype"), 
-            url("#{$ft-font-base-url}/BentonSansRegular.woff") format("woff"),
-            url("#{$ft-font-base-url}/BentonSansRegular.ttf") format("truetype");
-            font-style: normal;
-            font-weight: normal;
-        }
 
-        @font-face{
-            font-family: "BentonSans";
-            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot");
-            src: url("http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot?#iefix") format("embedded-opentype"), 
-            url("#{$ft-font-base-url}/BentonSansBold.woff") format("woff"),
-            url("#{$ft-font-base-url}/BentonSansBold.ttf") format("truetype");
-            font-style: normal;
-            font-weight: bold;
-        }
+    @if $ft-include-benton-font == true {
 
-        @font-face{
-            font-family: "BentonSans";
-            src: url("#{$ft-font-base-url}/BentonSansLight.eot");
-            src: url("#{$ft-font-base-url}/BentonSansLight.eot?#iefix") format("embedded-opentype"),
-                 url("#{$ft-font-base-url}/BentonSansLight.woff") format("woff"),
-                 url("#{$ft-font-base-url}/BentonSansLight.ttf") format("truetype");
-            font-style: normal;
-            font-weight: 200;
-        }
+        // normal
+        @include font-face($name: 'BentonSans', $filename: 'BentonSansRegular', $special-eot-url: 'http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot');
+
+        // light
+        @include font-face($name: 'BentonSans', $filename: 'BentonSansLight', $weight: 200);
+
+        // bold
+        @include font-face($name: 'BentonSans', $filename: 'BentonSansBold', $weight: bold, $special-eot-url: 'http://s1.ft-static.com/m/font/ft-velcro/bentonsans-bold.eot');
     }
 
-    @if $ft-include-clarion-font == true{
-        /* eot is not included with clarion because it"s better to use Georgia for old IE versions */
-        @font-face{
-            font-family: "Clarion";
-            src: url("#{$ft-font-base-url}/Clarion.woff") format("woff"),
-                url("#{$ft-font-base-url}/Clarion.ttf") format("truetype");
-            font-style: normal;
-            font-weight: normal;
-        }
 
-        @font-face{
-            font-family: "Clarion";
-            src: url("#{$ft-font-base-url}/Clarion-Italic.woff") format("woff"),
-                url("#{$ft-font-base-url}/Clarion-Italic.ttf") format("truetype");
-            font-style: italic;
-            font-weight: normal;
-        }
+    @if $ft-include-clarion-font == true {
+        /* eot is not included with clarion because it's better to use Georgia for old IE versions */
 
-        @font-face{
-            font-family: "Clarion";
-            src: url("#{$ft-font-base-url}/Clarion-Bold.woff") format("woff"),
-                url("#{$ft-font-base-url}/Clarion-Bold.ttf") format("truetype");
-            font-style: normal;
-            font-weight: bold;
-        }
+        // normal
+        @include font-face($name: 'Clarion', $filename: 'Clarion', $no-ie8: true);
+
+        // light
+        @include font-face($name: 'Clarion', $filename: 'Clarion-Italic', $style: italic, $no-ie8: true);
+
+        // bold
+        @include font-face($name: 'Clarion', $filename: 'Clarion-Bold', $weight: bold, $no-ie8: true);
     }
+
+
+    @if $ft-include-bentongraphics-font == true {
+        // normal
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-Regular');
+        
+        // italic
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-RegularItal', $style: italic);
+
+        // bold
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-Medium', $weight: bold);
+
+        // bold italic
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-MediumItal', $style: italic, $weight: bold);
+
+        // light
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-Light', $weight: 200);
+
+        // light italic
+        @include font-face($name: 'BentonGraphicsSansCondensed', $filename: 'BentonGraphicsSansCondensed-LightItal', $style: italic, $weight: 200);
+    }
+
 }
