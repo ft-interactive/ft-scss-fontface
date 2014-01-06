@@ -1,4 +1,21 @@
 $ft-include-fontfaces: true;
+$ft-include-bentongraphics-font: true;
+$ft-include-icon-font: true;
 
 @import "../main";
 
+.header-text{
+  @extend .headline-font;
+}
+
+.body-text{
+  @extend %body-font;
+}
+
+.alt-text{
+  @extend %alt-font;
+}
+
+.map-text{
+  @extend %map-font;
+}
