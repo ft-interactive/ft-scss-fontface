@@ -19,6 +19,7 @@ $ft-fontfamily-bentongraphics: 'BentonGraphicsSansCondensed', Arial, Helvetica, 
 @if $ft-sans-only {
     %headline-font {
         font-family: $ft-fontfamily-benton;
+        font-weight: normal;
     }
 
     %body-font {
